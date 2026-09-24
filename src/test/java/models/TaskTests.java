@@ -1,5 +1,7 @@
 package models;
 
+import com.xoris.enums.Priority;
+import com.xoris.enums.TaskCategory;
 import com.xoris.models.Task;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +23,7 @@ public class TaskTests {
     @Test
     void shouldCreateTaskWithArgs() {
         Task task = new Task(
-                "New Test Task", "This is a test task", "Test", 0, LocalDate.parse("2026-09-25")
+                "New Test Task", "This is a test task", TaskCategory.OTHER, Priority.CRITICAL, LocalDate.parse("2026-09-25")
         );
 
         assertNotNull(task);
