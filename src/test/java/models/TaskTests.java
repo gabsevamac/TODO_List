@@ -21,7 +21,7 @@ public class TaskTests {
     @Test
     void shouldCreateTaskWithArgs() {
         Task task = new Task(
-                "New Test Task", "This is a test task", "Test", 0, LocalDate.parse("25/09/2026")
+                "New Test Task", "This is a test task", "Test", 0, LocalDate.parse("2026-09-25")
         );
 
         assertNotNull(task);
