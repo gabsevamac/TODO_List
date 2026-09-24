@@ -2,6 +2,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.xoris.enums.Priority;
 import com.xoris.enums.TaskCategory;
+import com.xoris.enums.TaskStatus;
 import com.xoris.models.Program;
 import com.xoris.models.Task;
 import java.time.LocalDate;
@@ -89,6 +90,60 @@ public class ProgramTests {
                   .allMatch(
                       task ->
                           task.getShortDescription().toLowerCase().contains("World".toLowerCase()));
+
+      assertTrue(check);
+    }
+  }
+
+  @Nested
+  class ModificationTests {
+    @BeforeAll()
+    static void setup() {
+      program = new Program();
+      program.setTasks(
+          List.of(
+              new Task(
+                  "Test 1 - World Building",
+                  "New Test 1",
+                  TaskCategory.STUDY,
+                  Priority.CRITICAL,
+                  LocalDate.parse("2026-09-30")),
+              new Task(
+                  "Test 2 - World Structures",
+                  "New Test 2",
+                  TaskCategory.HOME,
+                  Priority.LOW,
+                  LocalDate.parse("2026-09-29")),
+              new Task(
+                  "Test 3 - Other Testing",
+                  "New Test 3",
+                  TaskCategory.OTHER,
+                  Priority.MEDIUM,
+                  LocalDate.parse("2026-10-30")),
+              new Task(
+                  "Test 4 - Random Bullshit",
+                  "New Test 4",
+                  TaskCategory.WORK,
+                  Priority.HIGH,
+                  LocalDate.parse("2026-10-03"))));
+    }
+
+    @DisplayName("Mark Task As In Progress")
+    @Test
+    void shouldMarkTaskAsInProgress() {
+      Task task = program.getAllTasks().getFirst();
+      program.markTaskAsInProgress(task);
+      boolean check = task.getStatus().equals(TaskStatus.IN_PROGRESS);
+
+      assertTrue(check);
+    }
+
+    @DisplayName("Mark Task As Completed")
+    @Test
+    void shouldMarkTaskAsCompleted() {
+      Task task = program.getAllTasks().getFirst();
+      program.markTaskAsCompleted(task);
+      boolean check = task.getStatus().equals(TaskStatus.COMPLETED);
 
       assertTrue(check);
     }

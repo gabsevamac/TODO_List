@@ -25,6 +25,8 @@ public interface ProgramInterface {
   List<Task> getTasksByWord(String word);
 
   void deleteTask(Task task);
+
   void markTaskAsInProgress(Task task);
+
   void markTaskAsCompleted(Task task);
 }
