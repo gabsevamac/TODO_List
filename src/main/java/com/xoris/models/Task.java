@@ -2,12 +2,14 @@ package com.xoris.models;
 
 import com.xoris.enums.Priority;
 import com.xoris.enums.TaskCategory;
+import com.xoris.enums.TaskStatus;
 
 import java.time.LocalDate;
 
 public class Task {
     private String shortDescription;
     private String longDescription;
+    private TaskStatus status;
     private TaskCategory category;
     private Priority priority;
     private LocalDate created_at;
