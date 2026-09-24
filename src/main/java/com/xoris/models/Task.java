@@ -1,11 +1,13 @@
 package com.xoris.models;
 
+import com.xoris.enums.TaskCategory;
+
 import java.time.LocalDate;
 
 public class Task {
     private String shortDescription;
     private String longDescription;
-    private String category;
+    private TaskCategory category;
     private int priority;
     private LocalDate created_at;
     private LocalDate updated_at;
@@ -15,7 +17,7 @@ public class Task {
     public Task() {
     }
 
-    public Task(String shortDescription, String longDescription, String category, int priority, LocalDate due_at) {
+    public Task(String shortDescription, String longDescription, TaskCategory category, int priority, LocalDate due_at) {
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.category = category;
@@ -41,11 +43,11 @@ public class Task {
         this.longDescription = longDescription;
     }
 
-    public String getCategory() {
+    public TaskCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(TaskCategory category) {
         this.category = category;
     }
 
