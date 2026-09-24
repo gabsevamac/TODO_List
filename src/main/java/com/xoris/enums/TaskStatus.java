@@ -6,7 +6,6 @@ public enum TaskStatus {
     COMPLETED("Completed");
 
     private String description;
-
     TaskStatus(String description) {
         this.description = description;
     }
