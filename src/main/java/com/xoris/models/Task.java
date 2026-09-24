@@ -1,5 +1,6 @@
 package com.xoris.models;
 
+import com.xoris.enums.Priority;
 import com.xoris.enums.TaskCategory;
 
 import java.time.LocalDate;
@@ -8,7 +9,7 @@ public class Task {
     private String shortDescription;
     private String longDescription;
     private TaskCategory category;
-    private int priority;
+    private Priority priority;
     private LocalDate created_at;
     private LocalDate updated_at;
     private LocalDate due_at;
@@ -17,7 +18,7 @@ public class Task {
     public Task() {
     }
 
-    public Task(String shortDescription, String longDescription, TaskCategory category, int priority, LocalDate due_at) {
+    public Task(String shortDescription, String longDescription, TaskCategory category, Priority priority, LocalDate due_at) {
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.category = category;
@@ -51,11 +52,11 @@ public class Task {
         this.category = category;
     }
 
-    public int getPriority() {
+    public Priority getPriority() {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(Priority priority) {
         this.priority = priority;
     }
 
