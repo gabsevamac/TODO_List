@@ -17,13 +17,13 @@ public class Program implements ProgramInterface {
   }
 
   @Override
-  public Task createTask(
+  public void createTask(
       String shortDescription,
       String longDescription,
       TaskCategory category,
       Priority priority,
       LocalDate due_at) {
-    return new Task(shortDescription, longDescription, category, priority, due_at);
+    tasks.add(new Task(shortDescription, longDescription, category, priority, due_at));
   }
 
   @Override

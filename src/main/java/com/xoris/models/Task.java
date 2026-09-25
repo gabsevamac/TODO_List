@@ -45,10 +45,6 @@ public class Task {
     return status;
   }
 
-  public void setStatus(TaskStatus status) {
-    this.status = status;
-  }
-
   public String getShortDescription() {
     return shortDescription;
   }
@@ -103,5 +99,29 @@ public class Task {
 
   public void setDue_at(LocalDate due_at) {
     this.due_at = due_at;
+  }
+
+  @Override
+  public String toString() {
+    return "Short Description: "
+        + getShortDescription()
+        + "\n"
+        + "Long Description: "
+        + getLongDescription()
+        + "\n"
+        + "Status: "
+        + getStatus()
+        + "\n"
+        + "Category: "
+        + getCategory()
+        + "\n"
+        + "Due Date: "
+        + getDue_at()
+        + "\n"
+        + "Created At: "
+        + getCreated_at()
+        + "\n"
+        + "Updated At: "
+        + getUpdated_at();
   }
 }

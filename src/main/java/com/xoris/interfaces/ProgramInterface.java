@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ProgramInterface {
-  Task createTask(
+  void createTask(
       String shortDescription,
       String longDescription,
       TaskCategory category,
