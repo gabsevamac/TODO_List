@@ -35,10 +35,20 @@ public class Task {
 
   public void markAsInProgress() {
     this.status = TaskStatus.IN_PROGRESS;
+    updated_at = LocalDate.now();
   }
 
   public void markAsCompleted() {
     this.status = TaskStatus.COMPLETED;
+    updated_at = LocalDate.now();
+  }
+
+  public void updateShortDescription(String shortDescription) {
+    if (shortDescription == null || shortDescription.isBlank()) {
+      throw new IllegalArgumentException("Short Description cannot be null or blank");
+    }
+    this.shortDescription = shortDescription;
+    this.updated_at = LocalDate.now();
   }
 
   public TaskStatus getStatus() {
@@ -49,56 +59,63 @@ public class Task {
     return shortDescription;
   }
 
-  public void setShortDescription(String shortDescription) {
-    this.shortDescription = shortDescription;
-  }
-
   public String getLongDescription() {
     return longDescription;
   }
 
-  public void setLongDescription(String longDescription) {
+  public void updateLongDescription(String longDescription) {
+    if (longDescription == null || longDescription.isBlank()) {
+      throw new IllegalArgumentException("Long Description cannot be null or blank");
+    }
     this.longDescription = longDescription;
+    this.updated_at = LocalDate.now();
   }
 
   public TaskCategory getCategory() {
     return category;
   }
 
-  public void setCategory(TaskCategory category) {
+  public void updateCategory(TaskCategory category) {
+    if (category == null) {
+      throw new IllegalArgumentException("Category cannot be null");
+    }
     this.category = category;
+    this.updated_at = LocalDate.now();
   }
 
   public Priority getPriority() {
     return priority;
   }
 
-  public void setPriority(Priority priority) {
+  public void updatePriority(Priority priority) {
+    if (priority == null) {
+      throw new IllegalArgumentException("Priority cannot be null");
+    }
     this.priority = priority;
+    this.updated_at = LocalDate.now();
   }
 
   public LocalDate getCreated_at() {
     return created_at;
   }
 
-  public void setCreated_at(LocalDate created_at) {
-    this.created_at = created_at;
-  }
-
   public LocalDate getUpdated_at() {
     return updated_at;
   }
 
-  public void setUpdated_at(LocalDate updated_at) {
-    this.updated_at = updated_at;
-  }
-
-  public LocalDate getDue_at() {
+  public LocalDate getDueDate() {
     return due_at;
   }
 
-  public void setDue_at(LocalDate due_at) {
+  public void updateDueDate(LocalDate due_at) {
+    if (due_at == null) {
+      throw new IllegalArgumentException("Due Date cannot be null");
+    }
+    if (due_at.isBefore(LocalDate.now())) {
+      throw new IllegalArgumentException("Due Date cannot be before current date");
+    }
     this.due_at = due_at;
+    this.updated_at = LocalDate.now();
   }
 
   @Override
@@ -116,7 +133,7 @@ public class Task {
         + getCategory()
         + "\n"
         + "Due Date: "
-        + getDue_at()
+        + getDueDate()
         + "\n"
         + "Created At: "
         + getCreated_at()

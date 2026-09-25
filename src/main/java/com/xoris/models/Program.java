@@ -39,7 +39,7 @@ public class Program implements ProgramInterface {
   @Override
   public List<Task> getTasksByPeriod(LocalDate start, LocalDate end) {
     return tasks.stream()
-        .filter(task -> task.getDue_at().isBefore(end) && task.getDue_at().isAfter(start))
+        .filter(task -> task.getDueDate().isBefore(end) && task.getDueDate().isAfter(start))
         .toList();
   }
 
@@ -66,5 +66,30 @@ public class Program implements ProgramInterface {
   @Override
   public void markTaskAsCompleted(Task task) {
     tasks.stream().filter(t -> t.equals(task)).findFirst().ifPresent(Task::markAsCompleted);
+  }
+
+  @Override
+  public void updateShortDescription(Task task, String shortDescription) {
+    task.updateShortDescription(shortDescription);
+  }
+
+  @Override
+  public void updateLongDescription(Task task, String longDescription) {
+    task.updateLongDescription(longDescription);
+  }
+
+  @Override
+  public void updateCategory(Task task, TaskCategory category) {
+    task.updateCategory(category);
+  }
+
+  @Override
+  public void updatePriority(Task task, Priority priority) {
+    task.updatePriority(priority);
+  }
+
+  @Override
+  public void updateDueAt(Task task, LocalDate due_at) {
+    task.updateDueDate(due_at);
   }
 }
